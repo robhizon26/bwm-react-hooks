@@ -41,8 +41,8 @@ const BookingReserve = props => {
   const processAditionalData = () => {
     setProposedBooking({
       ...proposedBooking,
-      nights,
-      price,
+      nights:nights(),
+      price:price(),
       rental: props.rental
     });
   }
@@ -92,7 +92,7 @@ const BookingReserve = props => {
 
   const price = () => {
     const { rental: { dailyPrice } } = props;
-    return dailyPrice && nights * dailyPrice;
+    return dailyPrice && nights() * dailyPrice;
   }
 
   const isBookingValid = () => {
@@ -145,7 +145,7 @@ const BookingReserve = props => {
           <BwmModal
             onSubmit={reserveRental}
             title="Confirm Booking"
-            subtitle={formattedDate}
+            subtitle={formattedDate()}
             openBtn={
               <button
                 onClick={processAditionalData}
@@ -154,10 +154,10 @@ const BookingReserve = props => {
               </button>}
           >
             <div className="mb-2">
-              <em>{nights}</em> Nights /
+              <em>{nights()}</em> Nights /
               <em> ${rental.dailyPrice}</em> per Night
               <p>Guests: <em>{guests}</em></p>
-              <p>Price: <em>${price}</em></p>
+              <p>Price: <em>${price()}</em></p>
               <p>Do you confirm your booking for selected days?</p>
             </div>
             <ApiErrors errors={errors} />
