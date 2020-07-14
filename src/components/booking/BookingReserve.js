@@ -149,7 +149,7 @@ const BookingReserve = props => {
             openBtn={
               <button
                 onClick={processAditionalData}
-                disabled={!isBookingValid}
+                disabled={!isBookingValid()}
                 className='btn btn-bwm-main btn-block'>Reserve place now
               </button>}
           >
